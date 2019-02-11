@@ -152,7 +152,7 @@ void Deque_Resize(Deque* deque, const SizeType capacity)
 				//example:
 				//old array (size 5): [4] [5] [1] [2] [3]   (head 1   tail 5)
 				//new array (size 8): [1] [2] [3] [4] [5] [-] [-] [-]
-				void** newData = malloc(capacity * sizeof(ItemType));
+				ItemType* newData = malloc(capacity * sizeof(ItemType));
 				//copy [1] [2] [3] 
 				memcpy(newData, deque->data + deque->head, (deque->capacity - deque->head) * sizeof(ItemType));
 				//copy [4] [5]
@@ -164,7 +164,7 @@ void Deque_Resize(Deque* deque, const SizeType capacity)
 			}
 			else
 			{
-				void** newData = malloc(capacity * sizeof(ItemType));
+				ItemType* newData = malloc(capacity * sizeof(ItemType));
 				memcpy(newData, deque->data, deque->capacity * sizeof(ItemType));
 				free(deque->data);
 				deque->data = newData;
